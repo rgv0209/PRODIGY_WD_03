@@ -1,0 +1,139 @@
+/* Reset and Fonts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #0b0f19;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.game-container {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #38bdf8, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Mode Selection Controls */
+.mode-selection {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 10px;
+  background-color: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+  background: linear-gradient(45deg, #38bdf8, #a855f7);
+  color: #0b0f19;
+  border-color: transparent;
+}
+
+.status {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+/* 3x3 Grid Layout */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  background-color: #121826;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.cell:hover {
+  background-color: #1e293b;
+}
+
+/* Monoline X Marker with a Fading Gradient */
+.cell.x::before, .cell.x::after {
+  content: '';
+  position: absolute;
+  width: 10%;
+  height: 60%;
+  border-radius: 4px;
+}
+
+.cell.x::before {
+  transform: rotate(45deg);
+  background: linear-gradient(to bottom, #38bdf8, rgba(56, 189, 248, 0));
+}
+
+.cell.x::after {
+  transform: rotate(-45deg);
+  background: linear-gradient(to bottom, #38bdf8, rgba(56, 189, 248, 0));
+}
+
+/* Fixed Monoline O Marker with a Fading Circular Gradient */
+.cell.o::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  /* Renders a clean circle using background and masks together */
+  background: linear-gradient(135deg, #a855f7, rgba(168, 85, 247, 0.1));
+  mask: radial-gradient(circle, transparent 55%, black 58%);
+  -webkit-mask: radial-gradient(circle, transparent 55%, black 58%);
+}
+
+/* Action Controls button styles */
+.restart-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.restart-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
